@@ -6,9 +6,9 @@
 
 <a id='aut'></a>
 ## Authors
-* Bartosz Pietrowiak 144368
-* Kacper Wandel 144666
-* Michał Olszewski 144482
+* Bartosz Pietrowiak 144368 (BartoszPietrowiak)
+* Kacper Wandel 144666 (DarkKavon)
+* Michał Olszewski 144482 (olmichal)
 
 <a id='info'></a>
 ## General information
