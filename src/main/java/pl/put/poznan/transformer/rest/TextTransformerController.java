@@ -8,17 +8,19 @@ import java.util.Arrays;
 
 
 @RestController
-@RequestMapping("/{text}")
+@RequestMapping("/{opId}?{text}")
 public class TextTransformerController {
 
     private static final Logger logger = LoggerFactory.getLogger(TextTransformerController.class);
 
     @RequestMapping(method = RequestMethod.GET, produces = "application/json")
-    public String get(@PathVariable String text,
-                              @RequestParam(value="transforms", defaultValue="upper,escape") String[] transforms) {
+    public String get(@PathVariable String text, @PathVariable int opId,
+                              @RequestParam(value="transforms", defaultValue="upper,escape") String[] transforms,
+                              @RequestParam(value="opId", defaultValue="1") int operationId) {
 
         // log the parameters
         logger.debug(text);
+        logger.debug(String.valueOf(opId));
         logger.debug(Arrays.toString(transforms));
 
         // perform the transformation, you should run your logic here, below is just a silly example
@@ -27,8 +29,9 @@ public class TextTransformerController {
     }
 
     @RequestMapping(method = RequestMethod.POST, produces = "application/json")
-    public String post(@PathVariable String text,
-                      @RequestBody String[] transforms) {
+    public String post(@PathVariable String text, @PathVariable int opId,
+                      @RequestBody String[] transforms,
+                      @RequestBody int operationId) {
 
         // log the parameters
         logger.debug(text);
