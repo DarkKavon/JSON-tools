@@ -8,7 +8,7 @@ import java.util.Arrays;
 
 
 @RestController
-@RequestMapping("/{opId}?{text}")
+@RequestMapping("/{opId}_{text}")
 public class TextTransformerController {
 
     private static final Logger logger = LoggerFactory.getLogger(TextTransformerController.class);
@@ -24,8 +24,8 @@ public class TextTransformerController {
         logger.debug(Arrays.toString(transforms));
 
         // perform the transformation, you should run your logic here, below is just a silly example
-        TextTransformer transformer = new TextTransformer(transforms);
-        return transformer.transform(text);
+        TextTransformer transformer = new TextTransformer(text);
+        return transformer.transform();
     }
 
     @RequestMapping(method = RequestMethod.POST, produces = "application/json")
@@ -38,8 +38,8 @@ public class TextTransformerController {
         logger.debug(Arrays.toString(transforms));
 
         // perform the transformation, you should run your logic here, below is just a silly example
-        TextTransformer transformer = new TextTransformer(transforms);
-        return transformer.transform(text);
+        TextTransformer transformer = new TextTransformer(text);
+        return transformer.transform();
     }
 
 
