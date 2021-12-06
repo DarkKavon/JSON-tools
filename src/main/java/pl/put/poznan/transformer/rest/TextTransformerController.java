@@ -12,13 +12,13 @@ import java.util.Arrays;
 
 
 @RestController
-@RequestMapping("/{opId}_{text}")
+@RequestMapping("/{opId}_{text}_{set}")
 public class TextTransformerController {
 
     private static final Logger logger = LoggerFactory.getLogger(TextTransformerController.class);
 
     @RequestMapping(method = RequestMethod.GET, produces = "application/json")
-    public ResponseEntity<String> get(@PathVariable String text, @PathVariable int opId,
+    public ResponseEntity<String> get(@PathVariable String text, @PathVariable int opId, @PathVariable String[] set,
                               @RequestParam(value="transforms", defaultValue="upper,escape") String[] transforms,
                               @RequestParam(value="opId", defaultValue="1") int operationId) {
 
@@ -26,13 +26,17 @@ public class TextTransformerController {
         logger.debug(text);
         logger.debug(String.valueOf(opId));
         logger.debug(Arrays.toString(transforms));
+        logger.debug(Arrays.toString(set));
 
-        TextTransformer transformer = new TextTransformer(text);
+        TextTransformer transformer = new TextTransformer(text,set);
         if (opId == 1) {
             return transformer.prettyPrint();
         }
         else if (opId == 2) {
-            return transformer.minimize();
+            return transformer.minify();
+        }
+        else if (opId == 3) {
+            return transformer.filrterToDelete();
         }
         else {
             ResponseEntity<String> responseEntity = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
@@ -43,7 +47,7 @@ public class TextTransformerController {
     }
 
     @RequestMapping(method = RequestMethod.POST, produces = "application/json")
-    public ResponseEntity<String> post(@PathVariable String text, @PathVariable int opId,
+    public ResponseEntity<String> post(@PathVariable String text, @PathVariable int opId, @PathVariable String[] set,
                       @RequestBody String[] transforms,
                       @RequestBody int operationId) {
 
@@ -51,12 +55,15 @@ public class TextTransformerController {
         logger.debug(text);
         logger.debug(Arrays.toString(transforms));
 
-        TextTransformer transformer = new TextTransformer(text);
+        TextTransformer transformer = new TextTransformer(text,set);
         if (opId == 1) {
             return transformer.prettyPrint();
         }
         else if (opId == 2) {
-            return transformer.minimize();
+            return transformer.minify();
+        }
+        else if (opId == 3) {
+            return transformer.filrterToDelete();
         }
         else {
             ResponseEntity<String> responseEntity = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
