@@ -39,4 +39,22 @@ public class TextTransformer {
         }
     }
 
+    public ResponseEntity<String> minimize() {
+        ObjectMapper mapper = new ObjectMapper();
+        try {
+            JsonNode json = mapper.readTree(this.transforms);
+            String minified = json.toString();
+            ResponseEntity<String> responseEntity = new ResponseEntity<>(HttpStatus.OK).ok(minified);
+            return responseEntity;
+        } catch (JsonMappingException e) {
+            e.printStackTrace();
+            ResponseEntity<String> responseEntity = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+            return responseEntity;
+        } catch (IOException e) {
+            e.printStackTrace();
+            ResponseEntity<String> responseEntity = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+            return responseEntity;
+        }
+    }
+
 }

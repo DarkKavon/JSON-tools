@@ -31,6 +31,9 @@ public class TextTransformerController {
         if (opId == 1) {
             return transformer.prettyPrint();
         }
+        else if (opId == 2) {
+            return transformer.minimize();
+        }
         else {
             ResponseEntity<String> responseEntity = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
             return responseEntity;
@@ -51,6 +54,9 @@ public class TextTransformerController {
         TextTransformer transformer = new TextTransformer(text);
         if (opId == 1) {
             return transformer.prettyPrint();
+        }
+        else if (opId == 2) {
+            return transformer.minimize();
         }
         else {
             ResponseEntity<String> responseEntity = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
