@@ -63,7 +63,7 @@ public class TextTransformer {
     }
 
 
-    public ResponseEntity<String> filrterToDelete() {
+    public ResponseEntity<String> filterToDelete() {
         ObjectMapper mapper = new ObjectMapper();
         try {
             JsonNode json = mapper.readTree(this.transforms);
@@ -84,6 +84,25 @@ public class TextTransformer {
     }
 
 
+    public ResponseEntity<String> filterToStay() {
+        ObjectMapper mapper = new ObjectMapper();
+        try {
+            JsonNode json = mapper.readTree(this.transforms);
+            ObjectNode obj = json.deepCopy();
+            obj.retain(Arrays.asList(this.set));
+            String prettyJson = obj.toPrettyString();
+            ResponseEntity<String> responseEntity = new ResponseEntity<>(HttpStatus.OK).ok(prettyJson);
+            return responseEntity;
+        } catch (JsonMappingException e) {
+            e.printStackTrace();
+            ResponseEntity<String> responseEntity = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+            return responseEntity;
+        } catch (IOException e) {
+            e.printStackTrace();
+            ResponseEntity<String> responseEntity = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+            return responseEntity;
+        }
+    }
     
 
 }

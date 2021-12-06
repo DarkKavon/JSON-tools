@@ -36,7 +36,10 @@ public class TextTransformerController {
             return transformer.minify();
         }
         else if (opId == 3) {
-            return transformer.filrterToDelete();
+            return transformer.filterToDelete();
+        }
+        else if (opId == 4) {
+            return transformer.filterToStay();
         }
         else {
             ResponseEntity<String> responseEntity = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
@@ -63,7 +66,10 @@ public class TextTransformerController {
             return transformer.minify();
         }
         else if (opId == 3) {
-            return transformer.filrterToDelete();
+            return transformer.filterToDelete();
+        }
+        else if (opId == 4) {
+            return transformer.filterToStay();
         }
         else {
             ResponseEntity<String> responseEntity = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
