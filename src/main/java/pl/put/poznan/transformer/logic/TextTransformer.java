@@ -6,6 +6,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import java.io.IOException;
+import org.springframework.http.ResponseEntity;
+import org.springframework.http.HttpStatus;
 
 /**
  * This is just an example to show that the logic should be outside the REST
@@ -19,25 +21,22 @@ public class TextTransformer {
         this.transforms = transforms;
     }
 
-    public String transform() {
-        // of course, normally it would do something based on the transforms
+    public ResponseEntity<String> prettyPrint() {
         ObjectMapper mapper = new ObjectMapper();
         try {
             JsonNode json = mapper.readTree(this.transforms);
-            System.out.println(json);
             String prettyJson = json.toPrettyString();
-            return prettyJson;
+            ResponseEntity<String> responseEntity = new ResponseEntity<>(HttpStatus.OK).ok(prettyJson);
+            return responseEntity;
         } catch (JsonMappingException e) {
             e.printStackTrace();
+            ResponseEntity<String> responseEntity = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+            return responseEntity;
         } catch (IOException e) {
             e.printStackTrace();
+            ResponseEntity<String> responseEntity = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+            return responseEntity;
         }
-
-        
-
-        System.out.println(this.transforms);
-        System.out.println(this.transforms);
-        return this.transforms.toUpperCase();
     }
 
 }
