@@ -1,7 +1,6 @@
 package pl.put.poznan.transformer.logic;
 
 import java.util.Arrays;
-import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
@@ -9,8 +8,6 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import java.io.IOException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.HttpStatus;
-import com.fasterxml.jackson.databind.ser.impl.SimpleFilterProvider;
-import com.fasterxml.jackson.databind.ser.impl.SimpleBeanPropertyFilter;
 
 /**
  * This is just an example to show that the logic should be outside the REST
@@ -31,7 +28,7 @@ public class TextTransformer {
         try {
             JsonNode json = mapper.readTree(this.transforms);
             String prettyJson = json.toPrettyString();
-            ResponseEntity<String> responseEntity = new ResponseEntity<>(HttpStatus.OK).ok(prettyJson);
+            ResponseEntity<String> responseEntity = ResponseEntity.ok().body(prettyJson);
             return responseEntity;
         } catch (JsonMappingException e) {
             e.printStackTrace();
@@ -49,7 +46,7 @@ public class TextTransformer {
         try {
             JsonNode json = mapper.readTree(this.transforms);
             String minified = json.toString();
-            ResponseEntity<String> responseEntity = new ResponseEntity<>(HttpStatus.OK).ok(minified);
+            ResponseEntity<String> responseEntity = ResponseEntity.ok().body(minified);
             return responseEntity;
         } catch (JsonMappingException e) {
             e.printStackTrace();
@@ -70,7 +67,7 @@ public class TextTransformer {
             ObjectNode obj = json.deepCopy();
             obj.remove(Arrays.asList(this.set));
             String prettyJson = obj.toPrettyString();
-            ResponseEntity<String> responseEntity = new ResponseEntity<>(HttpStatus.OK).ok(prettyJson);
+            ResponseEntity<String> responseEntity = ResponseEntity.ok().body(prettyJson);
             return responseEntity;
         } catch (JsonMappingException e) {
             e.printStackTrace();
@@ -91,7 +88,7 @@ public class TextTransformer {
             ObjectNode obj = json.deepCopy();
             obj.retain(Arrays.asList(this.set));
             String prettyJson = obj.toPrettyString();
-            ResponseEntity<String> responseEntity = new ResponseEntity<>(HttpStatus.OK).ok(prettyJson);
+            ResponseEntity<String> responseEntity = ResponseEntity.ok().body(prettyJson);
             return responseEntity;
         } catch (JsonMappingException e) {
             e.printStackTrace();
