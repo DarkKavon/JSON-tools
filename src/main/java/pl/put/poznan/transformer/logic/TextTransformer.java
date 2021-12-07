@@ -9,10 +9,6 @@ import java.io.IOException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.HttpStatus;
 
-/**
- * This is just an example to show that the logic should be outside the REST
- * service.
- */
 public class TextTransformer {
 
     private final String transforms;
@@ -59,7 +55,6 @@ public class TextTransformer {
         }
     }
 
-
     public ResponseEntity<String> filterToDelete() {
         ObjectMapper mapper = new ObjectMapper();
         try {
@@ -80,7 +75,6 @@ public class TextTransformer {
         }
     }
 
-
     public ResponseEntity<String> filterToStay() {
         ObjectMapper mapper = new ObjectMapper();
         try {
@@ -100,6 +94,5 @@ public class TextTransformer {
             return responseEntity;
         }
     }
-    
 
 }
