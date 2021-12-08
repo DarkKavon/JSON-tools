@@ -30,22 +30,27 @@ public class TextTransformerController {
         logger.debug(Arrays.toString(set));
         
         if (operationId == 1) {
+            logger.info("Operation identifier correct. Transformation started.");
             PrettyPrint decor = new PrettyPrint(transforms, set);
             ResponseEntity<String> responseEntity = ResponseEntity.ok().body(decor.returnResult());
             return responseEntity;
         } else if (operationId == 2) {
+            logger.info("Operation identifier correct. Transformation started.");
             Minify decor = new Minify(transforms, set);
             ResponseEntity<String> responseEntity = ResponseEntity.ok().body(decor.returnResult());
             return responseEntity;
         } else if (operationId == 3) {
+            logger.info("Operation identifier correct. Transformation started.");
             FilterToDelete decor = new FilterToDelete(transforms, set);
             ResponseEntity<String> responseEntity = ResponseEntity.ok().body(decor.returnResult());
             return responseEntity;
         } else if (operationId == 4) {
+            logger.info("Operation identifier correct. Transformation started.");
             FilterToStay decor = new FilterToStay(transforms, set);
             ResponseEntity<String> responseEntity = ResponseEntity.ok().body(decor.returnResult());
             return responseEntity;
         } else {
+            logger.error("Operation identifier not known. Returning 400 bad request.");
             ResponseEntity<String> responseEntity = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
             return responseEntity;
         }
@@ -64,22 +69,27 @@ public class TextTransformerController {
         logger.debug(Arrays.toString(set));
 
         if (operationId == 1) {
+            logger.info("Operation identifier correct. Transformation started.");
             PrettyPrint decor = new PrettyPrint(transforms, set);
             ResponseEntity<String> responseEntity = ResponseEntity.ok().body(decor.returnResult());
             return responseEntity;
         } else if (operationId == 2) {
+            logger.info("Operation identifier correct. Transformation started.");
             Minify decor = new Minify(transforms, set);
             ResponseEntity<String> responseEntity = ResponseEntity.ok().body(decor.returnResult());
             return responseEntity;
         } else if (operationId == 3) {
+            logger.info("Operation identifier correct. Transformation started.");
             FilterToDelete decor = new FilterToDelete(transforms, set);
             ResponseEntity<String> responseEntity = ResponseEntity.ok().body(decor.returnResult());
             return responseEntity;
         } else if (operationId == 4) {
+            logger.info("Operation identifier correct. Transformation started.");
             FilterToStay decor = new FilterToStay(transforms, set);
             ResponseEntity<String> responseEntity = ResponseEntity.ok().body(decor.returnResult());
             return responseEntity;
         } else {
+            logger.error("Operation identifier not known. Returning 400 bad request.");
             ResponseEntity<String> responseEntity = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
             return responseEntity;
         }
