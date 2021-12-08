@@ -13,7 +13,6 @@ public class FilterToStay extends PrintJson {
         ObjectNode obj = json.deepCopy();
         obj.retain(Arrays.asList(this.set));
         String prettyJson = obj.toPrettyString();
-        //ResponseEntity<String> responseEntity = ResponseEntity.ok().body(prettyJson);
         return prettyJson;
     }
 }

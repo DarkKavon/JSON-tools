@@ -23,7 +23,6 @@ public class PrintJson extends TextTransformer {
 
     public String returnResult() {
         String simpleJson = this.json.toString();
-        //ResponseEntity<String> responseEntity = ResponseEntity.ok().body(simpleJson);
         return simpleJson;
     }
 

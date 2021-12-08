@@ -8,7 +8,6 @@ public class PrettyPrint extends PrintJson {
 
     public String returnResult() {
         String prettyJson = this.json.toPrettyString();
-        //ResponseEntity<String> responseEntity = ResponseEntity.ok().body(prettyJson);
         return prettyJson;
     }
 

@@ -8,7 +8,6 @@ import pl.put.poznan.transformer.logic.FilterToDelete;
 import pl.put.poznan.transformer.logic.FilterToStay;
 import pl.put.poznan.transformer.logic.Minify;
 import pl.put.poznan.transformer.logic.PrettyPrint;
-import pl.put.poznan.transformer.logic.TextTransformer;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.HttpStatus;
 import java.util.Arrays;

@@ -8,7 +8,6 @@ public class Minify extends PrintJson {
 
     public String returnResult() {
         String minified = json.toString();
-        //ResponseEntity<String> responseEntity = ResponseEntity.ok().body(minified);
         return minified;
     }
 

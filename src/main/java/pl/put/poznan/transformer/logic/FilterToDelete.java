@@ -13,7 +13,6 @@ public class FilterToDelete extends PrintJson {
         ObjectNode obj = json.deepCopy();
         obj.remove(Arrays.asList(this.set));
         String prettyJson = obj.toPrettyString();
-        //ResponseEntity<String> responseEntity = ResponseEntity.ok().body(prettyJson);
         return prettyJson;
     }
 }
