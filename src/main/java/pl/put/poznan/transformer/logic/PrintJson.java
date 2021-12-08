@@ -4,7 +4,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import java.io.IOException;
-import org.springframework.http.ResponseEntity;
 
 public class PrintJson extends TextTransformer {
 
@@ -22,10 +21,10 @@ public class PrintJson extends TextTransformer {
         }
     }
 
-    public ResponseEntity<String> simplePrint() {
+    public String returnResult() {
         String simpleJson = this.json.toString();
-        ResponseEntity<String> responseEntity = ResponseEntity.ok().body(simpleJson);
-        return responseEntity;
+        //ResponseEntity<String> responseEntity = ResponseEntity.ok().body(simpleJson);
+        return simpleJson;
     }
 
 }

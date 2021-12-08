@@ -31,17 +31,21 @@ public class TextTransformerController {
         logger.debug(Arrays.toString(set));
         
         if (operationId == 1) {
-            PrettyPrint pp = new PrettyPrint(transforms, set);
-            return pp.prettyPrint();
+            PrettyPrint decor = new PrettyPrint(transforms, set);
+            ResponseEntity<String> responseEntity = ResponseEntity.ok().body(decor.returnResult());
+            return responseEntity;
         } else if (operationId == 2) {
-            Minify min = new Minify(transforms, set);
-            return min.minify();
+            Minify decor = new Minify(transforms, set);
+            ResponseEntity<String> responseEntity = ResponseEntity.ok().body(decor.returnResult());
+            return responseEntity;
         } else if (operationId == 3) {
-            FilterToDelete ftd = new FilterToDelete(transforms, set);
-            return ftd.filterToDelete();
+            FilterToDelete decor = new FilterToDelete(transforms, set);
+            ResponseEntity<String> responseEntity = ResponseEntity.ok().body(decor.returnResult());
+            return responseEntity;
         } else if (operationId == 4) {
-            FilterToStay fts = new FilterToStay(transforms, set);
-            return fts.filterToStay();
+            FilterToStay decor = new FilterToStay(transforms, set);
+            ResponseEntity<String> responseEntity = ResponseEntity.ok().body(decor.returnResult());
+            return responseEntity;
         } else {
             ResponseEntity<String> responseEntity = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
             return responseEntity;
@@ -61,17 +65,21 @@ public class TextTransformerController {
         logger.debug(Arrays.toString(set));
 
         if (operationId == 1) {
-            PrettyPrint pp = new PrettyPrint(transforms, set);
-            return pp.prettyPrint();
+            PrettyPrint decor = new PrettyPrint(transforms, set);
+            ResponseEntity<String> responseEntity = ResponseEntity.ok().body(decor.returnResult());
+            return responseEntity;
         } else if (operationId == 2) {
-            Minify min = new Minify(transforms, set);
-            return min.minify();
+            Minify decor = new Minify(transforms, set);
+            ResponseEntity<String> responseEntity = ResponseEntity.ok().body(decor.returnResult());
+            return responseEntity;
         } else if (operationId == 3) {
-            FilterToDelete ftd = new FilterToDelete(transforms, set);
-            return ftd.filterToDelete();
+            FilterToDelete decor = new FilterToDelete(transforms, set);
+            ResponseEntity<String> responseEntity = ResponseEntity.ok().body(decor.returnResult());
+            return responseEntity;
         } else if (operationId == 4) {
-            FilterToStay fts = new FilterToStay(transforms, set);
-            return fts.filterToStay();
+            FilterToStay decor = new FilterToStay(transforms, set);
+            ResponseEntity<String> responseEntity = ResponseEntity.ok().body(decor.returnResult());
+            return responseEntity;
         } else {
             ResponseEntity<String> responseEntity = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
             return responseEntity;
