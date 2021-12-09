@@ -1,15 +1,16 @@
 package pl.put.poznan.transformer.logic;
+
+import java.util.Arrays;
+import com.fasterxml.jackson.databind.node.ObjectNode;
+
 /** Concrete Decorator
  * @author Kacper Wandel
  * @author Bartosz Pietrowiak
  * @author Michał Olszewski
  * @version 1.0
  */
-
-import java.util.Arrays;
-import com.fasterxml.jackson.databind.node.ObjectNode;
-
 public class FilterToStay extends PrintJson {
+    /**Concrete Decorator */
 
     public FilterToStay(String transforms, String[] set) {
         super(transforms, set);

@@ -1,10 +1,4 @@
 package pl.put.poznan.transformer.logic;
-/** Decorator
- * @author Kacper Wandel
- * @author Bartosz Pietrowiak
- * @author Michał Olszewski
- * @version 1.0
- */
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.JsonNode;
@@ -13,6 +7,12 @@ import java.io.IOException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/** Decorator
+ * @author Kacper Wandel
+ * @author Bartosz Pietrowiak
+ * @author Michał Olszewski
+ * @version 1.0
+ */
 public class PrintJson extends TextTransformer {
 
     protected JsonNode json;

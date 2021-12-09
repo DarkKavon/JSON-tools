@@ -7,7 +7,6 @@ package pl.put.poznan.transformer.logic;
  */
 
 public class PrettyPrint extends PrintJson {
-
     /**
      * Class to pretty print JSON
      * @param transforms input JSON string
