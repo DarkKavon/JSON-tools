@@ -1,4 +1,10 @@
 package pl.put.poznan.transformer.rest;
+/** API Controller
+ * @author Kacper Wandel
+ * @author Bartosz Pietrowiak
+ * @author Michał Olszewski
+ * @version 1.0
+ */
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
