@@ -8,11 +8,10 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import pl.put.poznan.transformer.logic.FilterToDelete;
+import pl.put.poznan.transformer.logic.FilterToStay;
 
-public class FilterToDeleteTest {
-
-    private FilterToDelete filterToDelete;
+public class FilterToStayTest {
+    private FilterToStay filterToStay;
     private ObjectMapper mapper;
 
     @BeforeEach
@@ -22,7 +21,7 @@ public class FilterToDeleteTest {
 
     @Test
     public void testReturnResultOK() {
-        filterToDelete = new FilterToDelete("{\"id\":1,\"value\":\"test\"}", new String[] {"value"});
+        filterToStay = new FilterToStay("{\"id\":1,\"value\":\"test\"}", new String[] {"id"});
         String resStr = "";
         try {
             JsonNode resJson = mapper.readTree("{\"id\":1}");
@@ -32,22 +31,21 @@ public class FilterToDeleteTest {
         } catch(JsonProcessingException e) {
             e.printStackTrace();
         }
-        assertEquals(resStr, filterToDelete.returnResult());
+        assertEquals(resStr, filterToStay.returnResult());
     }
 
     @Test
     public void testReturnResultErr1() {
-        filterToDelete = new FilterToDelete("{\"id\":1,\"value\":\"test\"}", new String[] {"notInJSON"});
+        filterToStay = new FilterToStay("{\"id\":1,\"value\":\"test\"}", new String[] {"notInJSON"});
         String resStr = "";
         try {
-            JsonNode resJson = mapper.readTree("{\"id\":1,\"value\":\"test\"}");
+            JsonNode resJson = mapper.readTree("{}");
             resStr = resJson.toPrettyString();
         } catch(JsonMappingException e) {
             e.printStackTrace();
         } catch(JsonProcessingException e) {
             e.printStackTrace();
         }
-        assertEquals(resStr, filterToDelete.returnResult());
+        assertEquals(resStr, filterToStay.returnResult());
     }
-    
 }
