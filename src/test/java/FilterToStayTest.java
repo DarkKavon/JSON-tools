@@ -51,6 +51,21 @@ public class FilterToStayTest {
     }
 
     @Test
+    public void testReturnResultOK2() {
+        filterToStay = new FilterToStay("{\"id\":1,\"value\":\"test\"}", new String[] {"id","value"});
+        String resStr = "";
+        try {
+            JsonNode resJson = mapper.readTree("{\"id\":1,\"value\":\"test\"}");
+            resStr = resJson.toPrettyString();
+        } catch(JsonMappingException e) {
+            e.printStackTrace();
+        } catch(JsonProcessingException e) {
+            e.printStackTrace();
+        }
+        assertEquals(resStr, filterToStay.returnResult());
+    }
+
+    @Test
     public void testReturnResultMock() {
         filterToStay = mock(FilterToStay.class);
         when(filterToStay.returnResult()).thenReturn(new String());

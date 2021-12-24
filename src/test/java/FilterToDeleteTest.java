@@ -52,6 +52,21 @@ public class FilterToDeleteTest {
     }
 
     @Test
+    public void testReturnResultOK2() {
+        filterToDelete = new FilterToDelete("{\"id\":1,\"value\":\"test\"}", new String[] {"id","value"});
+        String resStr = "";
+        try {
+            JsonNode resJson = mapper.readTree("{}");
+            resStr = resJson.toPrettyString();
+        } catch(JsonMappingException e) {
+            e.printStackTrace();
+        } catch(JsonProcessingException e) {
+            e.printStackTrace();
+        }
+        assertEquals(resStr, filterToDelete.returnResult());
+    }
+
+    @Test
     public void testReturnResultMock() {
         filterToDelete = mock(FilterToDelete.class);
         when(filterToDelete.returnResult()).thenReturn(new String());
