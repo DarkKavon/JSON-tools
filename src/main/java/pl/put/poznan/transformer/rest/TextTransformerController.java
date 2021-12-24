@@ -34,6 +34,7 @@ public class TextTransformerController {
 
         // log the parameters
         logger.debug(transforms);
+        logger.debug(compare);
         logger.debug(String.valueOf(operationId));
         logger.debug(Arrays.toString(set));
         
