@@ -16,7 +16,7 @@ import org.slf4j.LoggerFactory;
 public class PrintJson extends TextTransformer {
 
     protected JsonNode json;
-    protected static final Logger logger = LoggerFactory.getLogger(PrintJson.class);
+    protected static Logger logger = LoggerFactory.getLogger(PrintJson.class);
 
     /**
      * Class print JSON.
