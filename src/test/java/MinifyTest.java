@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 
 import pl.put.poznan.transformer.logic.Minify;
 
-public class MinifyJsonTest {
+public class MinifyTest {
     private ObjectMapper mapper;
     private Minify minify;
     
