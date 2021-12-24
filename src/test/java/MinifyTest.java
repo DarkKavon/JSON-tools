@@ -1,4 +1,5 @@
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.*;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -34,4 +35,9 @@ public class MinifyTest {
         assertEquals(resStr, minify.returnResult());
     } 
     
+    @Test
+    public void testReturnResultMock() {
+        minify = mock(Minify.class);
+        when(minify.returnResult()).thenReturn(new String());
+    }
 }

@@ -1,4 +1,5 @@
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.*;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -34,5 +35,11 @@ public class PrettyPrintTest {
         }
         assertEquals(resStr, prettyPrint.returnResult());
     } 
+
+    @Test
+    public void testReturnResultMock() {
+        prettyPrint = mock(PrettyPrint.class);
+        when(prettyPrint.returnResult()).thenReturn(new String());
+    }
 
 }

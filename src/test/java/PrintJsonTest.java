@@ -37,11 +37,9 @@ public class PrintJsonTest {
     }
     
     @Test
-    public void testReturnResult() {
+    public void testReturnResultMock() {
         printJson = mock(PrintJson.class);
-
         when(printJson.returnResult()).thenReturn(new String());
-
     }
 
 }

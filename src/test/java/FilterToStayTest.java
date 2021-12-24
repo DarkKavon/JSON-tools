@@ -1,4 +1,5 @@
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.*;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -47,5 +48,11 @@ public class FilterToStayTest {
             e.printStackTrace();
         }
         assertEquals(resStr, filterToStay.returnResult());
+    }
+
+    @Test
+    public void testReturnResultMock() {
+        filterToStay = mock(FilterToStay.class);
+        when(filterToStay.returnResult()).thenReturn(new String());
     }
 }
