@@ -26,7 +26,7 @@ public class FilterToDeleteTest {
         filterToDelete = new FilterToDelete("{\"id\":1,\"value\":\"test\"}", new String[] {"value"});
         String resStr = "";
         try {
-            JsonNode resJson = mapper.readTree("{\"id\":1}");
+            JsonNode resJson = mapper.readTree("\"id\":1");
             resStr = resJson.toPrettyString();
         } catch(JsonMappingException e) {
             e.printStackTrace();
